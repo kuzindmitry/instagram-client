@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vUV-yw-eX9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vUV-yw-eX9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -264,17 +264,29 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="C4z-XD-yHf"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fez-9R-1UV">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="RDn-HC-CCc" secondAttribute="bottom" id="4Ml-Kk-1LX"/>
                             <constraint firstItem="RDn-HC-CCc" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="93S-cp-F85"/>
+                            <constraint firstItem="fez-9R-1UV" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="TgN-vn-KqG"/>
+                            <constraint firstItem="fez-9R-1UV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bc8-j4-bHI"/>
                             <constraint firstAttribute="trailing" secondItem="RDn-HC-CCc" secondAttribute="trailing" id="gw3-W9-0PN"/>
                             <constraint firstItem="RDn-HC-CCc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nid-eD-Bel"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Lqs-ov-8qB"/>
+                    <navigationItem key="navigationItem" id="Lqs-ov-8qB">
+                        <barButtonItem key="rightBarButtonItem" title="Выход" id="pDC-rw-fsd">
+                            <connections>
+                                <action selector="logoutButtonDidTap:" destination="BYZ-38-t0r" id="UBV-fh-jZK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="fez-9R-1UV" id="qY7-bX-OXD"/>
                         <outlet property="followedByLabel" destination="iKy-xa-sQ7" id="tS8-VG-hxR"/>
                         <outlet property="followsLabel" destination="nNm-dh-qud" id="Fz8-N1-LaU"/>
                         <outlet property="tableView" destination="RDn-HC-CCc" id="ldu-B2-po5"/>
@@ -284,7 +296,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="800.79999999999995" y="184.85757121439281"/>
+            <point key="canvasLocation" x="847" y="185"/>
         </scene>
         <!--Tag Photos Table View Controller-->
         <scene sceneID="8cX-6C-xp2">
@@ -409,7 +421,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dYV-Gn-hGK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1430" y="185"/>
+            <point key="canvasLocation" x="1945" y="191"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8Uv-cv-IbJ">

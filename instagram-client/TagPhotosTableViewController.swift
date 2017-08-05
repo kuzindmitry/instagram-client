@@ -17,6 +17,10 @@ class TagPhotosTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "#" + tag.name
+        loadPhotos()
+    }
+    
+    func loadPhotos() {
         APIManager.shared.getPhotosForTag(tag) { (newPhotos) in
             self.photos = newPhotos
             DispatchQueue.main.async {

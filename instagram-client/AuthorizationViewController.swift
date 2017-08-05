@@ -18,7 +18,17 @@ class AuthorizationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.loadRequest(URLRequest.init(url: URL(string: "https://api.instagram.com/oauth/authorize/?client_id=\(clientId)&scope=public_content+follower_list+relationships+comments+likes&redirect_uri=\(redirectUri)&response_type=token")!))
+        let url = URL(string: "https://api.instagram.com/oauth/authorize/?client_id=\(clientId)&scope=public_content+follower_list+relationships+comments+likes&redirect_uri=\(redirectUri)&response_type=token")
+        let request = URLRequest(url: url!, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30.0)
+        removeCookies()
+        webView.loadRequest(request)
+    }
+    
+    func removeCookies() {
+        let storage = HTTPCookieStorage.shared
+        for cookie in storage.cookies! {
+            storage.deleteCookie(cookie)
+        }
     }
     
 }
@@ -30,7 +40,7 @@ extension AuthorizationViewController: UIWebViewDelegate {
             if url.range(of: "#access_token") != nil {
                 let access_token = url.components(separatedBy: "#access_token=").last!
                 Credential.token = access_token
-                self.present((self.storyboard?.instantiateInitialViewController())!, animated: true, completion: nil)
+                AuthorizationService().login()
             }
         }
         return true

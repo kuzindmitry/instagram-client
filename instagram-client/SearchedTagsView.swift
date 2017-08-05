@@ -9,15 +9,10 @@
 import Foundation
 import UIKit
 
-protocol SearchedTagsDelegate {
-    func selected(tag: Tag)
-}
-
 class SearchedTagsView: UIView {
     
     var tableView: UITableView!
     var tags: [Tag] = []
-    var delegate: SearchedTagsDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -52,9 +47,8 @@ extension SearchedTagsView: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.selected(tag: tags[indexPath.row])
+        NotificationCenter.default.post(name: .init(rawValue: "SelectSearchedTag"), object: tags[indexPath.row])
         isHidden = true
     }
 
-    
 }
